@@ -25,9 +25,10 @@
   <div class="container">
     <h1>Spatial Database Management Toolkit</h1>
     <div class="motivation">
-      <p>Working with spatial data often involves handling large and complex databases. In many cases, opening an entire dataset to inspect its structure or contents is time‑consuming and inefficient, especially when dealing with formats like Shapefiles, GeoJSON, or nested JSON.
-         This toolkit streamlines the early stages of spatial data preparation by offering lightweight, command‑line scripts to profile, clean, statistically summarize, and visualize spatial datasets — all without requiring full-featured GIS platforms.
-         The goal is to support faster, more transparent, and reproducible workflows during exploratory analysis and data processing, addressing frequent challenges found in real‑world projects.</p>
+      <p>Working with spatial data often involves handling large and complex databases. In many cases, opening an entire dataset to inspect its structure or contents is time‑consuming and inefficient, 
+        especially when dealing with formats like Shapefiles, GeoJSON, or nested JSON. This toolkit streamlines the early stages of spatial data preparation by offering lightweight, command‑line scripts 
+        to profile, clean, statistically summarize, and visualize spatial datasets — all without requiring full-featured GIS platforms. The goal is to support faster, more transparent, and reproducible 
+        workflows during exploratory analysis and data processing, addressing frequent challenges found in real‑world projects.</p>
     </div>
 
     <h2>Toolkit Overview</h2>
@@ -36,7 +37,7 @@
     <!-- Script 1 -->
     <div class="script-section">
       <div class="script-title"><span class="script-number">1</span>view_db.py</div>
-      <p><strong>Purpose:</strong> Profile a spatial or tabular dataset: structure, fields, missing values, coordinate fields, and more.</p>
+      <p><strong>Purpose:</strong> Quickly analyze and profile large datasets to understand data structure, quality, and spatial characteristics without loading entire files into memory.</p>
       <p><strong>Key Features:</strong></p>
       <ul>
         <li>Auto-detects file type and format</li>
@@ -68,7 +69,8 @@
     <!-- Script 3 -->
     <div class="script-section">
       <div class="script-title"><span class="script-number">3</span>chart.py</div>
-      <p><strong>Purpose:</strong> Automatically generate bar, line, or scatter plots from tabular data using intuitive CLI.</p>
+      <p><strong>Purpose:</strong> This tool supports both univariate and bivariate statistical visualization, allowing users 
+                to inspect frequency distributions, categorical breakdowns, and numeric comparisons using appropriate chart types.</p>
       <p><strong>Key Features:</strong></p>
       <ul>
         <li>Automatically chooses appropriate chart (bar/line/scatter)</li>
@@ -84,12 +86,14 @@
     <!-- Script 4 -->
     <div class="script-section">
       <div class="script-title"><span class="script-number">4</span>viz.py</div>
-      <p><strong>Purpose:</strong> Create static or interactive maps from geospatial datasets. Supports attribute coloring, reprojection, and basemap overlays.</p>
+      <p><strong>Purpose:</strong> Visualize geospatial data on either a <strong>static map</strong> (image-based) or an <strong>interactive map</strong> (HTML-based) to explore, analyze, and communicate 
+        geographic information effectively. Supports vector spatial data formats with automatic CRS handling, optional attribute coloring, and export options.</p>
       <p><strong>Key Features:</strong></p>
       <ul>
-        <li>Matplotlib + contextily (static maps)</li>
-        <li>Folium HTML export (interactive maps)</li>
+        <li>Supports static maps with basemaps and scale bars</li>
+        <li>Supports interactive web maps with zoom, pan, and optional titles</li>
         <li>Support for color-by attributes and titles</li>
+        <li>Automatically detects spatial file formats and reprojects to appropriate CRS</li>
       </ul>
       <p><strong>Usage:</strong></p>
       <div class="code">python geo_map.py &lt;file_or_dir&gt; [--mode static|interactive] [--basemap ...] [--color_by FIELD] [--title "Title"] [--output FILE]</div>
