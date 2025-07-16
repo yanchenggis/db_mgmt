@@ -175,9 +175,40 @@
         <div class="script-section">
             <div class="script-title">
                 <span class="script-number">2</span>
-                Script 2 - Coming Soon
+                Data Cleaner
             </div>
-            <p>Description of your second script will go here...</p>
+            <p><strong>Purpose:</strong> Clean, filter, and convert tabular or spatial data with flexible command-line options. This script helps streamline preprocessing tasks such as selecting fields, 
+                dropping incomplete records, and removing low-quality columns — all while supporting a wide range of file formats.</p>
+            
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li>Supports multiple formats: CSV, Excel, JSON, GeoJSON, Shapefile, Parquet, TSV</li>
+                <li>Handles both local files and remote URLs</li>
+                <li>Select specific columns for export</li>
+                <li>Drop rows containing any null values</li>
+                <li>Remove columns with high percentages of missing data</li>
+                <li>Automatically exports in the format specified by the output file extension</li>
+            </ul>
+        
+            <p><strong>Usage:</strong></p>
+            <div class="code">python clean_data.py &lt;input_file&gt; &lt;output_file&gt; [options]</div>
+        
+            <p><strong>Options:</strong></p>
+            <ul>
+                <li><code>--columns name,age,city</code> &nbsp;→ &nbsp;Export only the specified columns</li>
+                <li><code>--drop-nulls</code> &nbsp;→ &nbsp;Remove all rows with any missing values</li>
+                <li><code>--null-threshold 30</code> &nbsp;→ &nbsp;Remove columns with over 30% missing values</li>
+            </ul>
+        
+            <p><strong>Examples:</strong></p>
+            <div class="code">python clean_data.py input.csv output.csv --columns name,age,city</div>
+            <div class="code">python clean_data.py input.csv output.csv --drop-nulls</div>
+            <div class="code">python clean_data.py input.csv output.csv --null-threshold 20</div>
+            <div class="code">python clean_data.py input.csv output.xlsx --columns name,age --drop-nulls --null-threshold 40</div>
+        
+            <div class="formats">
+                <strong>Supported formats:</strong> CSV, Excel (.xlsx, .xls), JSON, Shapefile (.shp), GeoJSON, GeoPackage (.gpkg), Parquet, TSV, URLs
+            </div>
         </div>
         
         <div class="script-section">
