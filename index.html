@@ -30,96 +30,80 @@
       <p>The goal is to support faster, more transparent, and reproducible workflows during exploratory analysis and data processing, addressing frequent challenges found in real‑world projects.</p>
     </div>
 
-    <h2>Overview</h2>
+    <h2>Toolkit Overview</h2>
     <p>This toolkit includes four Python scripts for spatial data workflows:</p>
 
     <!-- Script 1 -->
     <div class="script-section">
-      <div class="script-title"><span class="script-number">1</span>Data Profiler</div>
-      <p><strong>Purpose:</strong> Inspect large datasets and profile their structure, data quality, and spatial characteristics without loading the entire file into memory.</p>
+      <div class="script-title"><span class="script-number">1</span>view_db.py</div>
+      <p><strong>Purpose:</strong> Profile a spatial or tabular dataset: structure, fields, missing values, coordinate fields, and more.</p>
       <p><strong>Key Features:</strong></p>
       <ul>
-        <li>Preview file types: CSV, Excel, JSON, Shapefile, GeoJSON, Parquet, TSV, URL</li>
-        <li>Summary: row count, field list, CRS, metadata</li>
-        <li>Field statistics and missing‑value assessment</li>
-        <li>Detect coordinate columns and nested structures</li>
+        <li>Auto-detects file type and format</li>
+        <li>Prints data schema, row counts, field summary</li>
+        <li>Handles large datasets and spatial files</li>
       </ul>
       <p><strong>Usage:</strong></p>
-      <div class="code">python data_profiler.py &lt;input_file_or_url&gt; &lt;output_report&gt;</div>
-      <div class="formats"><strong>Supported formats:</strong> CSV, Excel (.xlsx/.xls), JSON, Shapefile (.shp), GeoJSON, GeoPackage (.gpkg), Parquet, TSV, URL</div>
+      <div class="code">python view_db.py &lt;input_file_or_url&gt;</div>
+      <div class="formats"><strong>Supported formats:</strong> CSV, Excel, JSON, GeoJSON, Shapefile, Parquet, GPKG, URL</div>
     </div>
 
     <!-- Script 2 -->
     <div class="script-section">
-      <div class="script-title"><span class="script-number">2</span>Data Cleaner</div>
-      <p><strong>Purpose:</strong> Clean, filter, and convert datasets—tabular or spatial—with flexible options for column selection, row/column filtering, and multi-format export.</p>
+      <div class="script-title"><span class="script-number">2</span>clean_db.py</div>
+      <p><strong>Purpose:</strong> Clean tabular data by selecting fields, dropping nulls, filtering columns by missing percentage, and exporting to multiple formats.</p>
       <p><strong>Key Features:</strong></p>
       <ul>
-        <li>Load from file or URL in multiple formats</li>
-        <li>Select specific columns</li>
-        <li>Drop rows with missing values; remove columns above a null‑value threshold</li>
-        <li>Export to CSV, Excel, JSON, Parquet, or TSV depending on output extension</li>
+        <li>Select or drop specific columns</li>
+        <li>Drop rows with missing values</li>
+        <li>Drop columns with more than N% missing values</li>
+        <li>Auto format detection and output conversion</li>
       </ul>
       <p><strong>Usage:</strong></p>
-      <div class="code">python clean_data.py &lt;input&gt; &lt;output&gt; [--columns ...] [--drop-nulls] [--null-threshold N]</div>
-      <p><strong>Examples:</strong></p>
-      <div class="code">python clean_data.py data.csv cleaned.csv --columns name,age,city</div>
-      <div class="code">python clean_data.py data.csv cleaned.xlsx --drop-nulls</div>
-      <div class="code">python clean_data.py data.csv cleaned.json --null-threshold 30</div>
-      <div class="code">python clean_data.py data.csv cleaned.parquet --columns id,value --drop-nulls --null-threshold 40</div>
-      <div class="formats"><strong>Supported formats:</strong> CSV, Excel (.xlsx/.xls), JSON, GeoJSON, Shapefile (.shp), GeoPackage (.gpkg), Parquet, TSV, URL</div>
+      <div class="code">python clean_db.py &lt;input&gt; &lt;output&gt; [--columns ...] [--drop-nulls] [--null-threshold N]</div>
+      <div class="code">python clean_db.py data.csv cleaned.csv --columns name,age --drop-nulls --null-threshold 20</div>
+      <div class="formats"><strong>Supported formats:</strong> CSV, Excel, JSON, Parquet, TSV</div>
     </div>
 
     <!-- Script 3 -->
     <div class="script-section">
-      <div class="script-title"><span class="script-number">3</span>Chart Auto Plotter</div>
-      <p><strong>Purpose:</strong> Generate quick, interpretable visual summaries—univariate or bivariate—from datasets with minimal commands. Appropriate chart types (bar, line, scatter) are automatically selected.</p>
+      <div class="script-title"><span class="script-number">3</span>chart.py</div>
+      <p><strong>Purpose:</strong> Automatically generate bar, line, or scatter plots from tabular data using intuitive CLI.</p>
       <p><strong>Key Features:</strong></p>
       <ul>
-        <li>Supports CSV, Excel, JSON, Parquet, TSV, or URL inputs</li>
-        <li>Automatically chooses appropriate chart (bar/line/scatter)</li>
-        <li>Mode 1: plot counts for a column; Mode 2: plot X vs Y</li>
-        <li>Customize top-N, chart type, output filename</li>
+        <li>Single-column or two-column plotting</li>
+        <li>Smart chart-type selection or user override</li>
+        <li>Output to PNG image</li>
       </ul>
       <p><strong>Usage:</strong></p>
-      <div class="code">python viz_auto.py &lt;data&gt; [--column COL | --x XFIELD --y YFIELD] [--chart_type...] [--top_n N] [--output FILE]</div>
-      <p><strong>Examples:</strong></p>
-      <div class="code">python viz_auto.py sales.csv --column product</div>
-      <div class="code">python viz_auto.py data.csv --x year --y population --chart_type line</div>
-      <div class="code">python viz_auto.py data.csv --column status --top_n 15 --output counts.png</div>
-      <div class="formats"><strong>Supported formats:</strong> CSV, Excel (.xlsx/.xls), JSON, Parquet, TSV, URL</div>
+      <div class="code">python chart.py &lt;input&gt; --column product</div>
+      <div class="code">python chart.py data.csv --x year --y sales --chart_type line --output sales.png</div>
+      <div class="formats"><strong>Supported formats:</strong> CSV, Excel, JSON, Parquet</div>
     </div>
 
     <!-- Script 4 -->
     <div class="script-section">
-      <div class="script-title"><span class="script-number">4</span>Geospatial Visualizer</div>
-      <p><strong>Purpose:</strong> Visualize geospatial datasets as static images or interactive HTML maps. Supports basemap overlays, attribute-based styling, and export.</p>
+      <div class="script-title"><span class="script-number">4</span>viz.py</div>
+      <p><strong>Purpose:</strong> Create static or interactive maps from geospatial datasets. Supports attribute coloring, reprojection, and basemap overlays.</p>
       <p><strong>Key Features:</strong></p>
       <ul>
-        <li>Static maps: Matplotlib + Contextily with scale bar</li>
-        <li>Interactive maps: Folium-based pan/zoom, HTML export</li>
-        <li>Color features by attribute field</li>
-        <li>Supports individual files and directories containing shapefiles</li>
-        <li>Reprojects CRS automatically to match basemaps or web mapping standards</li>
+        <li>Matplotlib + contextily (static maps)</li>
+        <li>Folium HTML export (interactive maps)</li>
+        <li>Support for color-by attributes and titles</li>
       </ul>
       <p><strong>Usage:</strong></p>
-      <div class="code">python geo_map.py &lt;file_or_dir&gt; [--mode static|interactive] [--basemap ...] [--color_by FIELD] [--title "Title"] [--output FILE]</div>
-      <p><strong>Examples:</strong></p>
-      <div class="code">python geo_map.py data/neighborhoods.shp --mode static</div>
-      <div class="code">python geo_map.py data/regions.geojson --mode static --color_by population --output map.png</div>
-      <div class="code">python geo_map.py data/districts --mode interactive --title "District Map" --output districts.html</div>
-      <div class="code">python geo_map.py data/parks.shp --mode static --basemap satellite</div>
-      <div class="formats"><strong>Supported formats:</strong> Shapefile (.shp), GeoJSON (.geojson/.json), GeoPackage (.gpkg), KML (.kml) [directory containing .shp also supported]</div>
-      <div class="formats"><strong>Static basemaps:</strong> osm, carto, dark, satellite</div>
+      <div class="code">python viz.py data/ --mode interactive --output map.html</div>
+      <div class="code">python viz.py data/parks.shp --mode static --color_by type --basemap carto</div>
+      <div class="formats"><strong>Supported formats:</strong> SHP, GeoJSON, GPKG, KML, directory (.shp)</div>
     </div>
 
     <div class="download-section">
       <h3>Download Scripts</h3>
-      <p>Access raw scripts from the GitHub repository:</p>
-      <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/data_profiler.py" class="download-btn">Data Profiler</a>
-      <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/clean_data.py" class="download-btn">Data Cleaner</a>
-      <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/viz_auto.py" class="download-btn">Chart Auto Plotter</a>
-      <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/geo_map.py" class="download-btn">Geospatial Visualizer</a>
+      <p>Access the raw scripts from the GitHub repository:</p>
+      <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/view_db.py" class="download-btn">view_db.py</a>
+      <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/clean_db.py" class="download-btn">clean_db.py</a>
+      <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/chart.py" class="download-btn">chart.py</a>
+      <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/viz.py" class="download-btn">viz.py</a>
     </div>
   </div>
 </body>
