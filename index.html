@@ -7,7 +7,7 @@
   <style>
     body { font-family: 'Segoe UI', sans-serif; max-width:900px; margin:0 auto; padding:40px 20px; line-height:1.6; color:#333; background:#f9f9f9; }
     .container { background:#fff; padding:40px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
-    h1 { color:#2c3e50; text-align:center; margin-bottom:30px; font-size:2.2rem; }
+    h1 { color:#2c3e50; text-align:center; margin-bottom:30px; font-size:1.7rem; }
     h2 { color:#34495e; border-bottom:2px solid #3498db; padding-bottom:8px; margin-top:30px; margin-bottom:20px; }
     .motivation p { text-indent:2em; margin: 1em 0; }
     .script-section { border:1px solid #ddd; margin:20px 0; padding:20px; border-radius:5px; }
@@ -25,9 +25,9 @@
   <div class="container">
     <h1>Spatial Database Management Toolkit</h1>
     <div class="motivation">
-      <p>Working with spatial data often involves handling large and complex databases. In many cases, opening an entire dataset to inspect its structure or contents is time‑consuming and inefficient — especially when dealing with formats like Shapefiles, GeoJSON, or nested JSON.</p>
-      <p>This toolkit streamlines the early stages of spatial data preparation by offering lightweight, command‑line scripts to profile, clean, statistically summarize, and visualize spatial datasets — all without requiring full-featured GIS platforms.</p>
-      <p>The goal is to support faster, more transparent, and reproducible workflows during exploratory analysis and data processing, addressing frequent challenges found in real‑world projects.</p>
+      <p>Working with spatial data often involves handling large and complex databases. In many cases, opening an entire dataset to inspect its structure or contents is time‑consuming and inefficient, especially when dealing with formats like Shapefiles, GeoJSON, or nested JSON.
+         This toolkit streamlines the early stages of spatial data preparation by offering lightweight, command‑line scripts to profile, clean, statistically summarize, and visualize spatial datasets — all without requiring full-featured GIS platforms.
+         The goal is to support faster, more transparent, and reproducible workflows during exploratory analysis and data processing, addressing frequent challenges found in real‑world projects.</p>
     </div>
 
     <h2>Toolkit Overview</h2>
@@ -41,10 +41,10 @@
       <ul>
         <li>Auto-detects file type and format</li>
         <li>Prints data schema, row counts, field summary</li>
-        <li>Handles large datasets and spatial files</li>
+        <li>Field statistics and missing‑value assessment</li>
       </ul>
       <p><strong>Usage:</strong></p>
-      <div class="code">python view_db.py &lt;input_file_or_url&gt;</div>
+      <div class="code">python view_db.py &lt;input_file_or_url&gt; [> &lt;output_file&gt;]</div>
       <div class="formats"><strong>Supported formats:</strong> CSV, Excel, JSON, GeoJSON, Shapefile, Parquet, GPKG, URL</div>
     </div>
 
@@ -71,9 +71,9 @@
       <p><strong>Purpose:</strong> Automatically generate bar, line, or scatter plots from tabular data using intuitive CLI.</p>
       <p><strong>Key Features:</strong></p>
       <ul>
-        <li>Single-column or two-column plotting</li>
-        <li>Smart chart-type selection or user override</li>
-        <li>Output to PNG image</li>
+        <li>Automatically chooses appropriate chart (bar/line/scatter)</li>
+         <li><strong>Mode 1 – Column Counts:</strong> Plot frequency counts of one column</li>           
+         <li><strong>Mode 2 – X vs Y:</strong> Visualize the relationship between two columns</li>
       </ul>
       <p><strong>Usage:</strong></p>
       <div class="code">python chart.py &lt;input&gt; --column product</div>
@@ -92,8 +92,7 @@
         <li>Support for color-by attributes and titles</li>
       </ul>
       <p><strong>Usage:</strong></p>
-      <div class="code">python viz.py data/ --mode interactive --output map.html</div>
-      <div class="code">python viz.py data/parks.shp --mode static --color_by type --basemap carto</div>
+      <div class="code">python geo_map.py &lt;file_or_dir&gt; [--mode static|interactive] [--basemap ...] [--color_by FIELD] [--title "Title"] [--output FILE]</div>
       <div class="formats"><strong>Supported formats:</strong> SHP, GeoJSON, GPKG, KML, directory (.shp)</div>
     </div>
 
