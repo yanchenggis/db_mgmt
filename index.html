@@ -1,283 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spatial Data Analysis Scripts</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-        
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.2rem;
-        }
-        
-        h2 {
-            color: #34495e;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 8px;
-            margin-top: 30px;
-            margin-bottom: 20px;
-        }
-        
-        h3 {
-            color: #2c3e50;
-            margin-top: 25px;
-            margin-bottom: 15px;
-        }
-        
-        .motivation {
-            padding: 20px;
-            margin: 20px 0;
-            text-indent: 2em;
-        }
-        
-        .script-section {
-            border: 1px solid #ddd;
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 5px;
-        }
-        
-        .script-number {
-            display: inline-block;
-            background: #3498db;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        
-        .script-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        
-        ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-        
-        li {
-            margin-bottom: 5px;
-        }
-        
-        .code {
-            background: #f8f8f8;
-            padding: 15px;
-            border-left: 4px solid #95a5a6;
-            font-family: 'Courier New', monospace;
-            margin: 10px 0;
-        }
-        
-        .download-section {
-            background: #ecf0f1;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-            margin-top: 30px;
-        }
-        
-        .download-btn {
-            display: inline-block;
-            background: #3498db;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 4px;
-            margin: 5px;
-            font-weight: bold;
-        }
-        
-        .download-btn:hover {
-            background: #2980b9;
-        }
-        
-        .formats {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 10px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spatial Database Management Toolkit</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; max-width:900px; margin:0 auto; padding:40px 20px; line-height:1.6; color:#333; background:#f9f9f9; }
+    .container { background:#fff; padding:40px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
+    h1 { color:#2c3e50; text-align:center; margin-bottom:30px; font-size:2.2rem; }
+    h2 { color:#34495e; border-bottom:2px solid #3498db; padding-bottom:8px; margin-top:30px; margin-bottom:20px; }
+    .motivation p { text-indent:2em; margin: 1em 0; }
+    .script-section { border:1px solid #ddd; margin:20px 0; padding:20px; border-radius:5px; }
+    .script-number { display:inline-block; background:#3498db; color:#fff; width:30px; height:30px; border-radius:50%; text-align:center; line-height:30px; font-weight:bold; margin-right:10px; }
+    .script-title { font-size:1.3rem; font-weight:bold; color:#2c3e50; margin-bottom:10px; }
+    ul { margin-left:20px; margin-bottom:15px; }
+    .code { background:#f8f8f8; padding:15px; border-left:4px solid #95a5a6; font-family:'Courier New', monospace; margin:10px 0; white-space: pre-wrap; }
+    .download-section { background:#ecf0f1; padding:20px; border-radius:5px; text-align:center; margin-top:30px; }
+    .download-btn { display:inline-block; background:#3498db; color:#fff; padding:10px 20px; text-decoration:none; border-radius:4px; margin:5px; font-weight:bold; }
+    .download-btn:hover { background:#2980b9; }
+    .formats { font-size:0.9rem; color:#666; margin-top:10px; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Spatial Database Management Toolkit</h1>
-        
-        <div class="motivation">
-            <p>Working with spatial data often involves handling large and complex databases. In many cases, opening an entire dataset just to inspect its structure or contents is time-consuming and inefficient 
-                — especially when dealing with formats like Shapefiles, GeoJSON, or nested JSON.</p><br>
-            <p>This toolkit was developed to streamline the early stages of spatial data analysis. It provides a set of lightweight, command-line scripts to quickly profile, clean, summarize, and visualize spatial 
-                data — without the need to load the entire file into memory or rely on full-featured GIS platforms.</p><br>
-            <p>The goal is to support faster and more efficient workflows, particularly during exploratory analysis and data preparation. These tools reflect challenges frequently encountered in real-world projects, 
-                and are intended to make spatial data handling more transparent, reproducible, and scalable.</p><br>
-        </div>
-        
-        <h2>Overview</h2>
-        <p>This toolkit contains four Python scripts designed for spatial data analysis workflow:</p>
-        
-        <div class="script-section">
-            <div class="script-title">
-                <span class="script-number">1</span>
-                Data Profiler
-            </div>
-            
-            <p><strong>Purpose:</strong> Quickly analyze and profile large datasets to understand data structure, quality, and spatial characteristics without loading entire files into memory.</p>
-            
-            <p><strong>Key Features:</strong></p>
-            <ul>
-                <li>View different file types (CSV, Excel, JSON, Shapefile, GeoJSON, etc.)</li>
-                <li>Quick overview of database details (CRS, row count, contents)</li>
-                <li>Field analysis and statistics for categorical values</li>
-                <li>Identify meaningful fields vs. high null percentage fields</li>
-                <li>Detect coordinate columns in non-spatial files</li>
-                <li>Handle nested data structures (dicts, lists)</li>
-            </ul>
-            
-            <p><strong>Usage:</strong></p>
-            <div class="code">python data_profiler.py file_path_or_url output_path</div>
-            
-            
-            <div class="formats">
-                <strong>Supported formats:</strong> CSV, Excel (.xlsx, .xls), JSON, Shapefile (.shp), GeoJSON, GeoPackage (.gpkg), Parquet, TSV, URLs
-            </div>
-        </div>
-        
-        <div class="script-section">
-            <div class="script-title">
-                <span class="script-number">2</span>
-                Data Cleaner
-            </div>
-            <p><strong>Purpose:</strong> Clean, filter, and convert tabular or spatial data with flexible command-line options. This script helps streamline preprocessing tasks such as selecting fields, 
-                dropping incomplete records, and removing low-quality columns — all while supporting a wide range of file formats.</p>
-            
-            <p><strong>Key Features:</strong></p>
-            <ul>
-                <li>Supports multiple formats: CSV, Excel, JSON, GeoJSON, Shapefile, Parquet, TSV</li>
-                <li>Handles both local files and remote URLs</li>
-                <li>Select specific columns for export</li>
-                <li>Drop rows containing any null values</li>
-                <li>Remove columns with high percentages of missing data</li>
-                <li>Automatically exports in the format specified by the output file extension</li>
-            </ul>
-        
-            <p><strong>Usage:</strong></p>
-            <div class="code">python clean_data.py &lt;input_file&gt; &lt;output_file&gt; [options]</div>
-        
-            <p><strong>Options:</strong></p>
-            <ul>
-                <li><code>--columns name,age,city</code> &nbsp;→ &nbsp;Export only the specified columns</li>
-                <li><code>--drop-nulls</code> &nbsp;→ &nbsp;Remove all rows with any missing values</li>
-                <li><code>--null-threshold 30</code> &nbsp;→ &nbsp;Remove columns with over 30% missing values</li>
-            </ul>
-        
-            <p><strong>Examples:</strong></p>
-            <div class="code">python clean_data.py input.csv output.csv --columns name,age,city</div>
-            <div class="code">python clean_data.py input.csv output.csv --drop-nulls</div>
-            <div class="code">python clean_data.py input.csv output.csv --null-threshold 20</div>
-            <div class="code">python clean_data.py input.csv output.xlsx --columns name,age --drop-nulls --null-threshold 40</div>
-        
-            <div class="formats">
-                <strong>Supported formats:</strong> CSV, Excel (.xlsx, .xls), JSON, Shapefile (.shp), GeoJSON, GeoPackage (.gpkg), Parquet, TSV, URLs
-            </div>
-        </div>
-        
-        <div class="script-section">
-            <div class="script-title">
-                <span class="script-number">3</span>
-                Chart Auto Plotter
-            </div>
-            <p><strong>Purpose:</strong> Provide quick, interpretable visual summaries of dataset variables. 
-                This tool supports both univariate and bivariate statistical visualization — allowing users 
-                to inspect frequency distributions, categorical breakdowns, and numeric comparisons using appropriate chart types.</p>
-
-             <p><strong>Key Features:</strong></p>
-                <ul>
-                    <li>Supports CSV, Excel, JSON, Parquet, TSV, and URL-based data</li>
-                    <li>Auto-detects suitable chart types (bar, line, or scatter)</li>
-                    <li>Visualize frequency distributions of a column (Mode 1)</li>
-                    <li>Compare values between two fields (Mode 2)</li>
-                    <li>Customizable output: top-N items, chart type override, save to file</li>
-                </ul>
-            
-                <p><strong>Usage:</strong></p>
-                <div class="code">python viz_auto.py &lt;data_file&gt; [options]</div>
-            
-                <p><strong>Modes:</strong></p>
-                <ul>
-                    <li><strong>Mode 1 – Column Counts:</strong> Plot frequency counts of one column</li>
-                    <div class="code">python viz_auto.py data.csv --column category</div>
-            
-                    <li><strong>Mode 2 – X vs Y:</strong> Visualize the relationship between two columns</li>
-                    <div class="code">python viz_auto.py data.csv --x age --y income</div>
-                </ul>
-            
-                <p><strong>Optional Arguments:</strong></p>
-                <ul>
-                    <li><code>--chart_type bar|line|scatter|auto</code> &nbsp;→ &nbsp;Override chart type (default: auto)</li>
-                    <li><code>--top_n 10</code> &nbsp;→ &nbsp;Show top 10 categories (for --column only)</li>
-                    <li><code>--output chart.png</code> &nbsp;→ &nbsp;Save plot to a file instead of showing it</li>
-                </ul>
-            
-                <p><strong>Examples:</strong></p>
-                <div class="code">python viz_auto.py sales.csv --column product</div>
-                <div class="code">python viz_auto.py data.csv --x year --y population --chart_type line</div>
-                <div class="code">python viz_auto.py input.csv --column status --top_n 15 --output bar_chart.png</div>
-            
-                <div class="formats">
-                    <strong>Supported formats:</strong> CSV, Excel (.xlsx, .xls), JSON, Parquet, TSV, HTTP/HTTPS URLs
-                </div>
-            </div>
-        </div>
-        
-        <div class="script-section">
-            <div class="script-title">
-                <span class="script-number">4</span>
-                Script 4 - Coming Soon
-            </div>
-            <p>Description of your fourth script will go here...</p>
-        </div>
-        
-        <div class="download-section">
-            <h3>Download Scripts</h3>
-            <p>Get all scripts from the GitHub repository:</p>
-            <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/db_view.py" class="download-btn">Data Profiler</a>
-            <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/clean_db.py" class="download-btn">Script 2 - Cleaner</a>
-            <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/chart.py" class="download-btn">Script 3 - Charting</a>
-            <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/viz.py" class="download-btn">Script 4 - Mapping</a>
-
-        </div>
+  <div class="container">
+    <h1>Spatial Database Management Toolkit</h1>
+    <div class="motivation">
+      <p>Working with spatial data often involves handling large and complex databases. In many cases, opening an entire dataset to inspect its structure or contents is time‑consuming and inefficient — especially when dealing with formats like Shapefiles, GeoJSON, or nested JSON.</p>
+      <p>This toolkit streamlines the early stages of spatial data preparation by offering lightweight, command‑line scripts to profile, clean, statistically summarize, and visualize spatial datasets — all without requiring full-featured GIS platforms.</p>
+      <p>The goal is to support faster, more transparent, and reproducible workflows during exploratory analysis and data processing, addressing frequent challenges found in real‑world projects.</p>
     </div>
 
-    <script>
-        function downloadScript(filename) {
-            // Replace with your actual GitHub repository raw file URLs
-            const baseUrl = 'https://raw.githubusercontent.com/yourusername/repo/main/';
-            window.open(baseUrl + filename);
-        }
-    </script>
+    <h2>Overview</h2>
+    <p>This toolkit includes four Python scripts for spatial data workflows:</p>
+
+    <!-- Script 1 -->
+    <div class="script-section">
+      <div class="script-title"><span class="script-number">1</span>Data Profiler</div>
+      <p><strong>Purpose:</strong> Inspect large datasets and profile their structure, data quality, and spatial characteristics without loading the entire file into memory.</p>
+      <p><strong>Key Features:</strong></p>
+      <ul>
+        <li>Preview file types: CSV, Excel, JSON, Shapefile, GeoJSON, Parquet, TSV, URL</li>
+        <li>Summary: row count, field list, CRS, metadata</li>
+        <li>Field statistics and missing‑value assessment</li>
+        <li>Detect coordinate columns and nested structures</li>
+      </ul>
+      <p><strong>Usage:</strong></p>
+      <div class="code">python data_profiler.py &lt;input_file_or_url&gt; &lt;output_report&gt;</div>
+      <div class="formats"><strong>Supported formats:</strong> CSV, Excel (.xlsx/.xls), JSON, Shapefile (.shp), GeoJSON, GeoPackage (.gpkg), Parquet, TSV, URL</div>
+    </div>
+
+    <!-- Script 2 -->
+    <div class="script-section">
+      <div class="script-title"><span class="script-number">2</span>Data Cleaner</div>
+      <p><strong>Purpose:</strong> Clean, filter, and convert datasets—tabular or spatial—with flexible options for column selection, row/column filtering, and multi-format export.</p>
+      <p><strong>Key Features:</strong></p>
+      <ul>
+        <li>Load from file or URL in multiple formats</li>
+        <li>Select specific columns</li>
+        <li>Drop rows with missing values; remove columns above a null‑value threshold</li>
+        <li>Export to CSV, Excel, JSON, Parquet, or TSV depending on output extension</li>
+      </ul>
+      <p><strong>Usage:</strong></p>
+      <div class="code">python clean_data.py &lt;input&gt; &lt;output&gt; [--columns ...] [--drop-nulls] [--null-threshold N]</div>
+      <p><strong>Examples:</strong></p>
+      <div class="code">python clean_data.py data.csv cleaned.csv --columns name,age,city</div>
+      <div class="code">python clean_data.py data.csv cleaned.xlsx --drop-nulls</div>
+      <div class="code">python clean_data.py data.csv cleaned.json --null-threshold 30</div>
+      <div class="code">python clean_data.py data.csv cleaned.parquet --columns id,value --drop-nulls --null-threshold 40</div>
+      <div class="formats"><strong>Supported formats:</strong> CSV, Excel (.xlsx/.xls), JSON, GeoJSON, Shapefile (.shp), GeoPackage (.gpkg), Parquet, TSV, URL</div>
+    </div>
+
+    <!-- Script 3 -->
+    <div class="script-section">
+      <div class="script-title"><span class="script-number">3</span>Chart Auto Plotter</div>
+      <p><strong>Purpose:</strong> Generate quick, interpretable visual summaries—univariate or bivariate—from datasets with minimal commands. Appropriate chart types (bar, line, scatter) are automatically selected.</p>
+      <p><strong>Key Features:</strong></p>
+      <ul>
+        <li>Supports CSV, Excel, JSON, Parquet, TSV, or URL inputs</li>
+        <li>Automatically chooses appropriate chart (bar/line/scatter)</li>
+        <li>Mode 1: plot counts for a column; Mode 2: plot X vs Y</li>
+        <li>Customize top-N, chart type, output filename</li>
+      </ul>
+      <p><strong>Usage:</strong></p>
+      <div class="code">python viz_auto.py &lt;data&gt; [--column COL | --x XFIELD --y YFIELD] [--chart_type...] [--top_n N] [--output FILE]</div>
+      <p><strong>Examples:</strong></p>
+      <div class="code">python viz_auto.py sales.csv --column product</div>
+      <div class="code">python viz_auto.py data.csv --x year --y population --chart_type line</div>
+      <div class="code">python viz_auto.py data.csv --column status --top_n 15 --output counts.png</div>
+      <div class="formats"><strong>Supported formats:</strong> CSV, Excel (.xlsx/.xls), JSON, Parquet, TSV, URL</div>
+    </div>
+
+    <!-- Script 4 -->
+    <div class="script-section">
+      <div class="script-title"><span class="script-number">4</span>Geospatial Visualizer</div>
+      <p><strong>Purpose:</strong> Visualize geospatial datasets as static images or interactive HTML maps. Supports basemap overlays, attribute-based styling, and export.</p>
+      <p><strong>Key Features:</strong></p>
+      <ul>
+        <li>Static maps: Matplotlib + Contextily with scale bar</li>
+        <li>Interactive maps: Folium-based pan/zoom, HTML export</li>
+        <li>Color features by attribute field</li>
+        <li>Supports individual files and directories containing shapefiles</li>
+        <li>Reprojects CRS automatically to match basemaps or web mapping standards</li>
+      </ul>
+      <p><strong>Usage:</strong></p>
+      <div class="code">python geo_map.py &lt;file_or_dir&gt; [--mode static|interactive] [--basemap ...] [--color_by FIELD] [--title "Title"] [--output FILE]</div>
+      <p><strong>Examples:</strong></p>
+      <div class="code">python geo_map.py data/neighborhoods.shp --mode static</div>
+      <div class="code">python geo_map.py data/regions.geojson --mode static --color_by population --output map.png</div>
+      <div class="code">python geo_map.py data/districts --mode interactive --title "District Map" --output districts.html</div>
+      <div class="code">python geo_map.py data/parks.shp --mode static --basemap satellite</div>
+      <div class="formats"><strong>Supported formats:</strong> Shapefile (.shp), GeoJSON (.geojson/.json), GeoPackage (.gpkg), KML (.kml) [directory containing .shp also supported]</div>
+      <div class="formats"><strong>Static basemaps:</strong> osm, carto, dark, satellite</div>
+    </div>
+
+    <div class="download-section">
+      <h3>Download Scripts</h3>
+      <p>Access raw scripts from the GitHub repository:</p>
+      <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/data_profiler.py" class="download-btn">Data Profiler</a>
+      <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/clean_data.py" class="download-btn">Data Cleaner</a>
+      <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/viz_auto.py" class="download-btn">Chart Auto Plotter</a>
+      <a href="https://raw.githubusercontent.com/yanchenggis/db_mgmt/main/geo_map.py" class="download-btn">Geospatial Visualizer</a>
+    </div>
+  </div>
 </body>
 </html>
