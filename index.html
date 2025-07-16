@@ -42,17 +42,11 @@
             margin-top: 25px;
             margin-bottom: 15px;
         }
-
-        p {
-            text-indent: 2em;
-        }
         
         .motivation {
-            background: #e8f4f8;
             padding: 20px;
-            border-left: 4px solid #3498db;
             margin: 20px 0;
-            font-style: italic;
+            text-indent: 2em;
         }
         
         .script-section {
@@ -214,9 +208,49 @@
         <div class="script-section">
             <div class="script-title">
                 <span class="script-number">3</span>
-                Script 3 - Coming Soon
+                Chart Auto Plotter
             </div>
-            <p>Description of your third script will go here...</p>
+            <p><strong>Purpose:</strong> Provide quick, interpretable visual summaries of dataset variables. 
+                This tool supports both univariate and bivariate statistical visualization — allowing users 
+                to inspect frequency distributions, categorical breakdowns, and numeric comparisons using appropriate chart types.</p>
+
+             <p><strong>Key Features:</strong></p>
+                <ul>
+                    <li>Supports CSV, Excel, JSON, Parquet, TSV, and URL-based data</li>
+                    <li>Auto-detects suitable chart types (bar, line, or scatter)</li>
+                    <li>Visualize frequency distributions of a column (Mode 1)</li>
+                    <li>Compare values between two fields (Mode 2)</li>
+                    <li>Customizable output: top-N items, chart type override, save to file</li>
+                </ul>
+            
+                <p><strong>Usage:</strong></p>
+                <div class="code">python viz_auto.py &lt;data_file&gt; [options]</div>
+            
+                <p><strong>Modes:</strong></p>
+                <ul>
+                    <li><strong>Mode 1 – Column Counts:</strong> Plot frequency counts of one column</li>
+                    <div class="code">python viz_auto.py data.csv --column category</div>
+            
+                    <li><strong>Mode 2 – X vs Y:</strong> Visualize the relationship between two columns</li>
+                    <div class="code">python viz_auto.py data.csv --x age --y income</div>
+                </ul>
+            
+                <p><strong>Optional Arguments:</strong></p>
+                <ul>
+                    <li><code>--chart_type bar|line|scatter|auto</code> &nbsp;→ &nbsp;Override chart type (default: auto)</li>
+                    <li><code>--top_n 10</code> &nbsp;→ &nbsp;Show top 10 categories (for --column only)</li>
+                    <li><code>--output chart.png</code> &nbsp;→ &nbsp;Save plot to a file instead of showing it</li>
+                </ul>
+            
+                <p><strong>Examples:</strong></p>
+                <div class="code">python viz_auto.py sales.csv --column product</div>
+                <div class="code">python viz_auto.py data.csv --x year --y population --chart_type line</div>
+                <div class="code">python viz_auto.py input.csv --column status --top_n 15 --output bar_chart.png</div>
+            
+                <div class="formats">
+                    <strong>Supported formats:</strong> CSV, Excel (.xlsx, .xls), JSON, Parquet, TSV, HTTP/HTTPS URLs
+                </div>
+            </div>
         </div>
         
         <div class="script-section">
