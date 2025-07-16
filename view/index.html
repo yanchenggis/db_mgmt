@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Database Profiler - view_db.py</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2em; background: #f9f9f9; }
+    h1, h2 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 1em; border-radius: 8px; }
+    summary { cursor: pointer; font-weight: bold; }
+    iframe { border: none; border-radius: 10px; }
+  </style>
+</head>
+<body>
+
+<h1>📊 Data Profiler Utility: <code>view_db.py</code></h1>
+<p>
+This Python script provides a comprehensive data profiling tool that is especially useful when working with large datasets or unfamiliar data sources.
+</p>
+
+<ul>
+  <li>Loads a wide range of data formats (CSV, Excel, JSON, GeoJSON, Shapefile, Parquet)</li>
+  <li>Detects and analyzes spatial data</li>
+  <li>Identifies coordinate columns in non-spatial data</li>
+  <li>Flags nested fields and high-null columns</li>
+  <li>Provides statistics on numeric and categorical fields</li>
+</ul>
+
+<h2>⚙️ Example Usage</h2>
+<pre><code class="language-python">
+In [1]: from view_db import profile_data
+
+In [2]: profile_data("https://yourdata.com/sample.geojson")
+</code></pre>
+
+<h2>💡 Features</h2>
+<details>
+  <summary>Smart File Loader</summary>
+  <p>Supports URLs and local paths. Determines file type by extension and content.</p>
+</details>
+
+<details>
+  <summary>Spatial Awareness</summary>
+  <p>Detects GeoJSON, Shapefile, and GPKG. Extracts geometry info like type and CRS.</p>
+</details>
+
+<details>
+  <summary>Data Profiling</summary>
+  <p>Calculates null percentage, unique values, and gives examples of nested fields.</p>
+</details>
+
+<h2>📄 Script Link</h2>
+<p>View the full script on GitHub: <a href="https://github.com/yanchenggis/db_mgmt/blob/main/view/view_db.py" target="_blank">view_db.py</a></p>
+
+<h2>🔍 Preview</h2>
+<iframe src="https://github.com/yanchenggis/db_mgmt/blob/main/view/view_db.py" width="100%" height="600"></iframe>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+</html>
