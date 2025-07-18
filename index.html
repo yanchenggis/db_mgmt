@@ -47,7 +47,7 @@
       </ul>
       <p><strong>Usage:</strong></p>
       <div class="code">python view_db.py &lt;input_file_or_url&gt; [> &lt;output_file&gt;]</div>
-      <div class="formats"><strong>Supported formats:</strong> CSV, Excel, JSON, GeoJSON, Shapefile, Parquet, GPKG, URL</div>
+      <div class="formats"><strong>Supported formats:</strong> CSV, Excel, JSON, GeoJSON, Shapefile, KML, Parquet, GPKG, URL</div>
     </div>
 
     <!-- Script 2 -->
@@ -64,7 +64,7 @@
       <p><strong>Usage:</strong></p>
       <div class="code">python clean_db.py &lt;input&gt; &lt;output&gt; [--columns ...] [--drop-nulls] [--null-threshold N]</div>
       <div class="code">python clean_db.py data.csv cleaned.csv --columns name,age --drop-nulls --null-threshold 20</div>
-      <div class="formats"><strong>Supported formats:</strong> CSV, Excel, JSON, Parquet, TSV</div>
+     <div class="formats"><strong>Supported formats:</strong> CSV, Excel, JSON, Parquet, TSV, Shapefile, GeoJSON, KML, GPKG, URLs (CSV/JSON/GeoJSON)</div>
     </div>
 
     <!-- Script 3 -->
@@ -81,7 +81,7 @@
       <p><strong>Usage:</strong></p>
       <div class="code">python chart.py &lt;input&gt; --column &lt;name&gt; [--title "..."] [--top_n N] [--output file.png]</div>
       <div class="code">python chart.py &lt;input&gt; --x &lt;col1&gt; --y &lt;col2&gt; [--chart_type bar|scatter|line|auto] [--output file.png]</div>
-      <div class="formats"><strong>Supported formats:</strong> CSV, Excel, JSON, Parquet</div>
+      <div class="formats"><strong>Supported formats:</strong> CSV, Excel, JSON, Parquet, TSV, Shapefile, GeoJSON, KML, GPKG, directory (.shp), URLs (CSV/JSON/GeoJSON)</div>
     </div>
 
     <!-- Script 4 -->
@@ -98,13 +98,14 @@
       </ul>
       <p><strong>Usage:</strong></p>
       <div class="code">python geo_map.py &lt;file_or_dir&gt; [--mode static|interactive] [--basemap ...] [--color_by FIELD] [--title "Title"] [--output FILE]</div>
-      <div class="formats"><strong>Supported formats:</strong> SHP, GeoJSON, GPKG, KML, directory (.shp)</div>
+      <div class="formats"><strong>Supported formats:</strong> SHP, GeoJSON, GPKG, KML, CSV, XLSX, ZIP, directory (.shp), URL</div>
+      <div class="basemaps"><strong>Basemap options:</strong> osm, carto, dark, satellite</div>
     </div>
 
     <div class="download-section">
       <h3>Download Scripts</h3>
       <p>Access the raw scripts from the GitHub repository:</p>
-      <a href="https://github.com/yanchenggis/db_mgmt/releases/download/db_tool/view_db.py.zip" class="download-btn">view_db.py (.zip)</a>
+      <a href="https://github.com/yanchenggis/db_mgmt/releases/download/db_tool/view_db.py.zip">view_db.py (.zip)</a>
       <a href="https://github.com/yanchenggis/db_mgmt/releases/download/db_tool/clean_db.py.zip" class="download-btn">clean_db.py (.zip)</a>
       <a href="https://github.com/yanchenggis/db_mgmt/releases/download/db_tool/chart.py.zip" class="download-btn">chart.py (.zip)</a>
       <a href="https://github.com/yanchenggis/db_mgmt/releases/download/db_tool/viz.py.zip" class="download-btn">viz.py (.zip)</a>
