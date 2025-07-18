@@ -1,0 +1,8 @@
+Download VS Code & Python
+
+conda create --name geo_env python=3.10 -y
+conda activate geo_env
+conda install -c conda-forge \
+pandas geopandas numpy matplotlib seaborn \
+contextily folium requests jupyter notebook \
+rasterio fiona pyproj shapely gdal -y
