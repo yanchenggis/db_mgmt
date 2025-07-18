@@ -1,3 +1,13 @@
+# Check if the software is installed
+Open Command Prompt (Win + R, type cmd) and type:
+python --version
+conda --version
+
+where python
+where conda
+
+
+# Set up the libraries
 Download VS Code & Python
 
 conda create --name geo_env python=3.10 -y
