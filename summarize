@@ -1,0 +1,66 @@
+# On QGIS
+
+import pandas as pd
+import geopandas as gpd
+import rasterio
+import numpy as np
+
+# For Vector Data (Shapefile, GeoJSON, etc.)
+def vector_stats(layer_name, field_name):
+    gdf = gpd.read_file(layer_name)
+    data = gdf[field_name]
+    
+    print("VECTOR STATISTICS")
+    print(f"Max: {data.max()}")
+    print(f"Min: {data.min()}")
+    print(f"Median: {data.median()}")
+    print(f"Mean: {data.mean()}")
+    print(f"Std: {data.std()}")
+
+# For Raster Data (TIFF, etc.)
+def raster_stats(layer_name):
+    with rasterio.open(layer_name) as src:
+        data = src.read(1, masked=True)  # Read first band, mask nodata
+    
+    print("RASTER STATISTICS")
+    print(f"Max: {data.max()}")
+    print(f"Min: {data.min()}")
+    print(f"Median: {np.median(data.compressed())}")
+    print(f"Mean: {data.mean()}")
+    print(f"Std: {data.std()}")
+
+# Usage Examples:
+# vector_stats('your_shapefile.shp', 'population')
+# raster_stats('your_raster.tif')
+
+
+# On Arcgis Pro
+
+import arcpy
+import pandas as pd
+import numpy as np
+
+def vector_stats_arcgis(layer_name, field_name):
+    values = [row[0] for row in arcpy.da.SearchCursor(layer_name, [field_name])]
+    data = pd.Series(values)
+    
+    print("VECTOR STATISTICS")
+    print(f"Max: {data.max()}")
+    print(f"Min: {data.min()}")
+    print(f"Median: {data.median()}")
+    print(f"Mean: {data.mean()}")
+    print(f"Std: {data.std()}")
+
+
+def raster_stats_arcgis(layer_name):
+    raster = arcpy.Raster(layer_name)
+    
+    print("RASTER STATISTICS")
+    print(f"Max: {raster.maximum}")
+    print(f"Min: {raster.minimum}")
+    print(f"Mean: {raster.mean}")
+    print(f"Std: {raster.standardDeviation}")
+
+# Usage with layer names (what you see in Table of Contents):
+# vector_stats_arcgis("Population_Data", "pop_count")
+# raster_stats_arcgis("Elevation_Layer")
